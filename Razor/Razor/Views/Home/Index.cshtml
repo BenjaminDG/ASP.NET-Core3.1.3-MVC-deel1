@@ -1,0 +1,40 @@
+﻿@model Razor.Models.Persoon
+Doorgegeven persoon : @Model.Voornaam @Model.Familienaam
+
+
+
+
+
+
+
+
+
+@* dit is commentaar
+    @for (var teller = 1; teller < 10; teller++)
+    {
+        <p>@teller</p>
+    }
+    <h1>@(1+2*5+0.5)</h1>
+    <h2>Countdown</h2>
+    @{
+        var getal = 10;
+        while (getal > 0)
+        {
+            <p>@getal</p>
+            getal--;
+        }
+    }
+
+
+
+    @if (new Random().Next(1, 11) == 7)
+    {
+        <text>Het is zeven</text>
+        @: Je hebt geluk
+    }
+    else
+    {
+        <text>Het is geen zeven</text>
+        @: Een andere keer misschien
+    }
+*@
