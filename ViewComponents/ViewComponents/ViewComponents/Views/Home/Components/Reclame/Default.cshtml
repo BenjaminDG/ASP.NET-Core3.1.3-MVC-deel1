@@ -1,0 +1,12 @@
+﻿
+@{
+    ViewData["Title"] = "Default";
+}
+
+<h1>Default</h1>
+
+@model string
+@{
+    var pad = $"/Images/{Model}.jpg";
+} <img src="@pad" alt="@Model" width="200" />
+
