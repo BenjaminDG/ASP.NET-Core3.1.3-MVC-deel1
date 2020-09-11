@@ -1,0 +1,10 @@
+﻿
+@{
+    ViewData["Title"] = "Decimal";
+}
+
+@model decimal 
+@{ 
+    IFormatProvider formatprovider = new System.Globalization.CultureInfo("nl-BE");
+    @Model.ToString("c", formatprovider)
+} 
