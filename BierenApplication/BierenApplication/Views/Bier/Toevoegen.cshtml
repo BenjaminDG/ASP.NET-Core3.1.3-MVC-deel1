@@ -1,0 +1,19 @@
+﻿
+@model Bier
+@{
+    ViewBag.Title = "Toevoegen";
+}
+
+<h2>Bier Toevoegen</h2>
+
+<form asp-action="Toevoegen">
+    <label asp-for="Naam"></label>
+    <span asp-validation-for="Naam"></span>
+    <input asp-for="Naam" />
+    <label asp-for="Alcohol"></label>
+    <span asp-validation-for="Alcohol"></span>
+    <input asp-for="Alcohol"/>
+    <input type="submit" value="Toevoegen" class="btn btn-primary" />
+    <div asp-validation-summary="All"></div>
+</form>
+

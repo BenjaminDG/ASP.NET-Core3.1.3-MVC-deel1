@@ -1,0 +1,19 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Session en application state</h1>
+    <p class="lead">
+        @(ViewBag.aantalBezoeken)e bezoek aan deze pagina binnen deze sessie
+    </p>
+    <p class="lead">
+        Totaal aantal bezoeken aan deze pagina : @ViewBag.totaalAantalBezoeken
+    </p>
+    <p class="lead">Vorige bezoek : @ViewBag.lastvisit</p>
+    <p>
+        <a href="~/Home/Index" class="btn btn-primary btn-lg">Refresh &raquo;</a>
+        <a href="~/Home/Wissen" class="btn btn-primary btn-lg">Reset &raquo;</a>
+    </p>
+</div>
+

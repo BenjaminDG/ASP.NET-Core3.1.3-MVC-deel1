@@ -1,6 +1,34 @@
 ﻿@model List<Bier>
 <h2>Alle bieren</h2>
-@foreach (var bier in Model)
-{
-<p>@Html.DisplayFor(m => bier.Id) @bier.Naam @Html.DisplayFor(m => bier.Alcohol)</p>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Naam</th>
+            <th>Alcohol</th>
+            <th></th>
+        </tr>
+        
+    </thead>
+    <tbody>
+        @foreach (var bier in Model)
+        {
+        <tr>
+            <td>@Html.DisplayFor(m => bier.Id)</td>
+            <td>@bier.Naam</td>
+            <td>@Html.DisplayFor(m => bier.Alcohol)</td>
+            <td>
+                <a asp-action="Verwijderen" asp-route-Id="@bier.Id">
+                    <img src="~/css/Images/delete.png" alt="Verwijderen" />
+                    </a>
+            </td>
+        </tr>
+        }
+
+        </tbody>
+</table> 
+
+
 }
+<p><a asp-action="Toevoegen" class="btn btn-outline-primary">Bier toevoegen</a></p>

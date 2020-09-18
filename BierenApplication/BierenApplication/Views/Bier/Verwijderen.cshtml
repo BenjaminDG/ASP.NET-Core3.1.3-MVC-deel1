@@ -1,0 +1,16 @@
+﻿
+@{
+    ViewData["Title"] = "Verwijderen";
+}
+
+<h1>Verwijderen</h1>
+
+@model Bier
+@{
+    ViewBag.Title = "Verwijderen";
+}
+
+<h2>@Model.Naam verwijderen?</h2>
+<form method="post" action="~/Bier/Delete/@Model.Id">
+    <input type="submit" value="Delete" />
+</form>

@@ -1,0 +1,38 @@
+﻿
+<div class="text-center">
+    <h1 class="display-4">Brochures</h1>
+
+
+</div>
+
+
+<partial name="BrochureToevoegen" />
+
+
+@model List<Brochure>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Bestemming</th>
+        </tr>
+    </thead>
+    <tbody>
+        
+        @foreach (var brochure in Model)
+        {
+            <tr>
+                <td>@Html.DisplayFor(m => brochure.ID)</td>
+
+                <td>@Html.DisplayFor(m => brochure.Bestemming)</td>
+
+            </tr>
+        }}
+    </tbody>
+
+
+
+</table>
+
+

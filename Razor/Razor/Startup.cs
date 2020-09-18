@@ -22,7 +22,10 @@ namespace Razor
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddControllersWithViews();
+            services.AddSingleton<Services.FiliaalService>();
+            services.AddSingleton<Services.PersoonService>();
+            services.AddControllersWithViews().AddSessionStateTempDataProvider();
+            services.AddSession();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -39,6 +42,7 @@ namespace Razor
                 app.UseExceptionHandler("/Home/Error");
             }
             app.UseStaticFiles();
+            app.UseSession();
 
             app.UseRouting();
 

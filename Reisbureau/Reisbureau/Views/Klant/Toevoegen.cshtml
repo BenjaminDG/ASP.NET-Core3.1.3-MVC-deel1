@@ -1,0 +1,24 @@
+﻿@model Klant
+@{ ViewBag.Titel = "Toevoegen";}
+
+<h2>Welkom op onze website!</h2>
+<h3>Om de reisbrochures te kunnen opsturen vragen we volgende gegevens:</h3>
+<form asp-action="Toevoegen" method="post">
+    <label asp-for="Naam"></label>
+    <input asp-for="Naam" />
+    <label asp-for="Voornaam"></label>
+    <input asp-for="Voornaam" />
+    <label asp-for="Adres"></label>
+    <input asp-for="Adres" />
+    <label asp-for="Postcode"></label>
+    <input asp-for="Postcode"  />
+    <label asp-for="Gemeente"></label>
+    <input asp-for="Gemeente"  />
+    <label asp-for="Email"></label>
+    <input asp-for="Email" />
+    <label asp-for="Telefoon"></label>
+    <input asp-for="Telefoon" />
+   
+    <input type="submit" value="Toevoegen" />
+    <div asp-validation-summary="All"></div>
+</form>

@@ -1,0 +1,43 @@
+﻿
+
+
+@model Persoon
+@{
+    ViewBag.Title = "Toevoegen";
+} <h2>Persoon toevoegen</h2>
+  <form asp-action="Toevoegen" method="post">
+      <label asp-for="Voornaam"></label>
+      <input asp-for="Voornaam" />
+      <label asp-for="Familienaam"></label>
+      <input asp-for="Familienaam" />
+      <label asp-for="Score"></label>
+      <input asp-for="Score" />
+      <label asp-for="Wedde"></label>
+      <input asp-for="Wedde" />
+      <label asp-for="Paswoord"></label>
+      <input asp-for="Paswoord" type="password" />
+      <label asp-for="HerhaalPaswoord"></label>
+      <input asp-for="HerhaalPaswoord" type="password" />
+
+      <label asp-for="Geboren"></label>
+      <input asp-for="Geboren" />
+      <span asp-validation-for="Geboren"></span>
+      <div>
+          <input asp-for="Gehuwd" />
+          <label asp-for="Gehuwd"></label>
+      </div>
+
+      <label asp-for="Opmerkingen"></label>
+<textarea asp-for="Opmerkingen"></textarea>
+      @* <label asp-for="Geslacht"></label>
+        <select asp-for="Geslacht"
+                asp-items="@new SelectList(Enum.GetNames(typeof(Geslacht)))">
+        </select>*@
+
+
+      @Html.LabelFor(m => m.Geslacht)
+      @Html.EditorFor(m => m.Geslacht)
+
+      <input type="submit" value="Toevoegen" />
+      <div asp-validation-summary="All"></div>
+  </form>

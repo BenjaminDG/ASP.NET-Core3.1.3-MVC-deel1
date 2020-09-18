@@ -5,19 +5,28 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using Newtonsoft.Json;
 using Razor.Models;
+using Razor.Services;
 
 namespace Razor.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
+        private FiliaalService _filiaalService;
+        public HomeController(FiliaalService filiaalService)
+        {
+            _filiaalService = filiaalService;
+        }
+
+
+        /*private readonly ILogger<HomeController> _logger;
 
         public HomeController(ILogger<HomeController> logger)
         {
             _logger = logger;
         }
-
+        */
         public IActionResult Index()
         {
             return View(new Persoon { Voornaam = "Eddy", Familienaam = "Wally" });
@@ -58,20 +67,13 @@ namespace Razor.Controllers
                 Gemeente = "Brussel"
             };
             ViewBag.deHoofdzetel = deHoofdZetel;
-            List<Filiaal> deFilialen = new List<Filiaal>() 
-            {
-                new Filiaal { Id = 1, Naam = "Antwerpen",
-Gebouwd = new DateTime(2003, 1, 1), Waarde = 2000000 },
-new Filiaal { Id = 2, Naam = "Wondelgem",
-Gebouwd = new DateTime(1979, 1, 1), Waarde = 2500000 },
-new Filiaal { Id = 3, Naam = "Haasrode",
-Gebouwd = new DateTime(1976, 1, 1), Waarde = 1000000 },
-new Filiaal { Id = 4, Naam = "Wevelgem",
-Gebouwd = new DateTime(1981, 1, 1), Waarde = 1600000 },
-new Filiaal { Id = 5, Naam = "Genk",
-Gebouwd = new DateTime(1990, 1, 1), Waarde = 4000000 }
-            };
-            return View(deFilialen);
+
+            var recentVerwijderdFiliaal = (string)this.TempData["filiaal"]; 
+if (recentVerwijderdFiliaal != null)
+                ViewBag.recenteVerwijdering = JsonConvert.DeserializeObject<Filiaal>(recentVerwijderdFiliaal).Naam;
+
+
+            return View(_filiaalService.FindAll());
         }
         [ActionName("Werknemerslijst")]
         public IActionResult AlleWerknemers()
@@ -80,6 +82,30 @@ Gebouwd = new DateTime(1990, 1, 1), Waarde = 4000000 }
             werknemers.Add(new Werknemer { Voornaam = "steven", Wedde = 1000, InDienst = DateTime.Today });
             werknemers.Add(new Werknemer { Voornaam = "Prosper", Wedde = 2000, InDienst = DateTime.Today.AddDays(2) });
             return View("AlleWerknemers",werknemers);
+        }
+
+        public IActionResult Verwijderen(int id)
+        {
+            var filiaal = _filiaalService.Read(id);
+            return View(filiaal);
+        }
+        [HttpPost]
+        public IActionResult Delete(int id)
+        {
+            var filiaal = _filiaalService.Read(id);
+            this.TempData["filiaal"] = JsonConvert.SerializeObject(filiaal);
+            _filiaalService.Delete(id);
+            return Redirect("~/Home/Verwijderd");
+        }
+
+        public IActionResult Verwijderd()
+        {
+            var verwijderdFiliaal = (string)this.TempData["filiaal"];
+            this.TempData.Keep("filiaal");
+            if (verwijderdFiliaal != null)
+                return View(JsonConvert.DeserializeObject<Filiaal>(verwijderdFiliaal));
+            else
+                return RedirectToAction("Vestigingen");
         }
     }
 }

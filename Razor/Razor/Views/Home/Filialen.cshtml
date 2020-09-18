@@ -1,12 +1,16 @@
 ﻿@model List<Filiaal>
-
 <h2>Filialen</h2>
 <ul>
     @foreach (var filiaal in Model)
     {
+        var url = Url.Action("Verwijderen", "Home", new { ID = filiaal.Id });
         <li>
             @filiaal.Id @filiaal.Naam @Html.DisplayFor(m => filiaal.Gebouwd)
             @Html.DisplayFor(m => filiaal.Waarde)
+            @Html.DisplayFor(m => filiaal.Eigenaar)
+            <a asp-action="Verwijderen" asp-route-id="@filiaal.Id">
+           <img src="~/Images/delete.png" al ="delete"/></a>
+            
         </li>
     }
 </ul>
