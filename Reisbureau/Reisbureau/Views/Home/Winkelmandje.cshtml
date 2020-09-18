@@ -1,5 +1,5 @@
 ﻿
-<h1>winkelmanje</h1>
+<h1>winkelmandje</h1>
 
 
 
@@ -13,18 +13,19 @@
             <th>Bestemming</th>
         </tr>
     </thead>
-    <tbody>
+
+    @if (Model != null){ <tbody>
         
-        @foreach( var brochure in Model)
+        @foreach (var brochure in Model)
         {
         <tr>
             <td>@Html.DisplayFor(m => brochure.ID)</td>
             
-            <td>@Html.DisplayFor(m=>brochure.Bestemming)</td>
+            <td>@Html.DisplayFor(m => brochure.Bestemming)</td>
             
         </tr>
         }
-    </tbody>
+    </tbody>}
 
 
 

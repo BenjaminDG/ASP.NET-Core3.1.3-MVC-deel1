@@ -9,6 +9,8 @@
 <partial name="BrochureToevoegen" />
 
 
+<partial name="Winkelmandje" />
+
 @model List<Brochure>
 
 <table class="table table-striped">
@@ -18,18 +20,22 @@
             <th>Bestemming</th>
         </tr>
     </thead>
-    <tbody>
-        
-        @foreach (var brochure in Model)
-        {
-            <tr>
-                <td>@Html.DisplayFor(m => brochure.ID)</td>
 
-                <td>@Html.DisplayFor(m => brochure.Bestemming)</td>
+    @if (Model != null)
+    {
+        <tbody>
 
-            </tr>
-        }}
-    </tbody>
+            @foreach (var brochure in Model)
+            {
+                <tr>
+                    <td>@Html.DisplayFor(m => brochure.ID)</td>
+
+                    <td>@Html.DisplayFor(m => brochure.Bestemming)</td>
+
+                </tr>
+            }
+        </tbody>
+}
 
 
 
