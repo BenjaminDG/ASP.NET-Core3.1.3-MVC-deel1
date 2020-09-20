@@ -1,32 +1,31 @@
-﻿
-<h1>winkelmandje</h1>
-
-
-
-
+﻿<p>Winkelmandje</p>
 @model List<Brochure>
-
-<table class ="table table-striped">
-    <thead>
-        <tr>
-            <th>ID</th>
-            <th>Bestemming</th>
-        </tr>
-    </thead>
-
-    @if (Model != null){ <tbody>
-        
+<h2>Brochures</h2>
+<ul>
+    @if (Model != null)
         @foreach (var brochure in Model)
         {
-        <tr>
-            <td>@Html.DisplayFor(m => brochure.ID)</td>
-            
-            <td>@Html.DisplayFor(m => brochure.Bestemming)</td>
-            
-        </tr>
-        }
-    </tbody>}
+            var url = "Verwijderen/" + brochure.ID;
+
+            <li>
+                @Html.DisplayFor(m => brochure.ID)
+                @Html.DisplayFor(m => brochure.Bestemming)
+
+                <a asp-action="Verwijderen" asp-route-id="@brochure.ID">
+                    <img src="~/Images/delete.png" alt="delete" />
+                </a>
+            </li>
+          }
+            <li class="text-center">
 
 
+                <p>
+                    <a href="~/Home/BrochuresDoorsturen"
+                       class="btn btn-primary btn-lg">Brochures aanvragen;</a>
+                </p>
+            </li>
 
-    </table>
+
+        
+
+</ul>

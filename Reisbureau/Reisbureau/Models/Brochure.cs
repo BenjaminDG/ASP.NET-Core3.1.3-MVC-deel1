@@ -8,8 +8,8 @@ namespace Reisbureau.Models
 {
     public class Brochure
     {
-        public int ID { get; set; }
-        public string Bestemming { get; set; }
+        public int ID { get; set; } 
+        public string Bestemming { get; set; } 
        
     }
 }

@@ -5,33 +5,7 @@
 
 <h1>KlantIndex</h1>
 
-@**@<div class="text-center">
-    <h1 class="display-4">Cookies</h1>
-    <p class="lead">@ViewBag.Tijdstip</p>
-    <
-</div>
+
+
 <a asp-action="Toevoegen" class="btn btn-primary"> niewe klant Toevoegen</a>
 
-@model IEnumerable<Klant>
-@{
-    ViewBag.Title = "Klanten";
-} <h2>Personen</h2>
-<table class="table table-striped">
-    <thead>
-        <tr>
-            <th>@Html.DisplayNameFor(m => m.ID)</th>
-            <th>@Html.DisplayNameFor(m => m.Voornaam)</th>
-            <th>@Html.DisplayNameFor(m => m.Naam)</th>
-                    </tr>
-    </thead>
-    <tbody>
-        @foreach (var persoon in Model)
-        {
-            <tr>
-                <td>@Html.DisplayFor(m => persoon.ID)</td>
-                <td>@Html.DisplayFor(m => persoon.Voornaam)</td>
-                <td>@Html.DisplayFor(m => persoon.Naam)</td>
-                            </tr>
-        }
-    </tbody>
-</table>

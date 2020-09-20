@@ -1,0 +1,31 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Brochures</h1>
+    <p class="lead">@ViewBag.Tijdstip</p>
+    <p>
+        <a href="~/Home/BrochureToevoegen"
+           class="btn btn-primary btn-lg">Bestemming toevoegen &raquo;</a>
+    </p>
+</div>
+
+@*@model List<Brochure>
+    @{
+        ViewData["Title"] = "AlleBrochures";
+    }
+    <form asp-action="BrochureToevoegen" method="post">
+
+        <input type="submit" value="Toevoegen" />
+        <a asp-action="BrochureToevoegen" class="btn btn-primary"> Bestemming invoeren</a>
+
+        <div asp-validation-summary="All"></div>
+    </form>
+
+    <partial name="AlleBrochures" />
+
+
+*@
+
+

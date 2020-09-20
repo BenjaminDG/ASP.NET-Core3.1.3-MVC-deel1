@@ -9,12 +9,13 @@ using Microsoft.Extensions.Logging;
 using Reisbureau.Models;
 using Microsoft.AspNetCore.Http;
 using Reisbureau.Services;
+using Newtonsoft.Json;
 
 namespace Reisbureau.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
+        
         private BrochureService _brochureService; 
 
         public HomeController( BrochureService brochureService)
@@ -26,24 +27,33 @@ namespace Reisbureau.Controllers
 
         public IActionResult Index()
         {
-            
-            
+
+            var brochures = _brochureService.FindAll();
             string laatsteBezoek = DateTime.Now.ToString();
             CookieOptions option = new CookieOptions();
             option.Expires = DateTime.Now.AddDays(365);
             Response.Cookies.Append("lastvisit", laatsteBezoek, option);
-            
-            var brochures = _brochureService.FindAll();
 
-            if (Request.Cookies["lastvisit"] == null) { return Redirect("~/Klant/Toevoegen"); }
-            else 
+
+
+
+            if (Request.Cookies["Voornaam"] == null) { return Redirect("~/Klant/Toevoegen"); }
+
+
+            else
+                ViewBag.Voornaam = Request.Cookies["Voornaam"];
                 return View();
+
+
         }
 
         [HttpGet]
         public IActionResult BrochureToevoegen()
         {
-            var brochure = new Brochure();
+            
+            var brochure = new Brochure() ;
+            
+
             return View(brochure);
         }
 
@@ -52,15 +62,34 @@ namespace Reisbureau.Controllers
         {
             if (this.ModelState.IsValid)
             {
+                
                 _brochureService.Add(b);
-                return Redirect("~/");
+
+                return RedirectToAction("Index");
 
             }
             else return View(b);
         }
 
-        public IActionResult Winkelmandje() { return View(_brochureService.FindAll()); }
+        public IActionResult Winkelmandje() 
+        {
+            
+               
+            
+            return View(_brochureService.FindAll()); }
 
+
+         public IActionResult Verwijderen(int id)
+        {
+             _brochureService.Delete(id);
+            return RedirectToAction("Index");
+        }
+        public IActionResult brochuresDoorsturen(int id) 
+        {
+
+            _brochureService.DeleteAll(id);
+            return RedirectToAction("Index"); 
+        }
         public IActionResult Privacy()
         {
             return View();

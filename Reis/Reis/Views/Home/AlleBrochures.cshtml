@@ -1,0 +1,27 @@
+﻿<h2>allebrochures</h2>
+@model List<Brochure>
+<h2>Filialen</h2>
+<ul>
+    @foreach (var brochure in Model)
+    {
+        var url = "Verwijderen/" + brochure.ID;
+        <li>
+            @brochure.ID @brochure.Naam
+
+            <a asp-action="Verwijderen" asp-route-id="@brochure.ID">
+                <img src="~/Images/delete.png" alt="delete" />
+            </a>
+        </li>
+    }
+    <li class="text-center">
+        
+        
+        <p>
+            <a href="~/Home/BrochuresDoorsturen"
+               class="btn btn-primary btn-lg">Brochures aanvragen;</a>
+        </p>
+    </li>
+</ul>
+
+
+  

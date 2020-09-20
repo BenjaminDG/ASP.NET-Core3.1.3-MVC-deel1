@@ -4,21 +4,21 @@
 <h2>Welkom op onze website!</h2>
 <h3>Om de reisbrochures te kunnen opsturen vragen we volgende gegevens:</h3>
 <form asp-action="Toevoegen" method="post">
-    <label asp-for="Naam"></label>
+    <div> <label asp-for="Naam">    </label>    <span asp-validation-for="Naam"> </span></div>
     <input asp-for="Naam" />
-    <label asp-for="Voornaam"></label>
+    <label asp-for="Voornaam">   </label>   <span asp-validation-for="Voornaam"></span>
     <input asp-for="Voornaam" />
-    <label asp-for="Adres"></label>
+    <label asp-for="Adres">     </label>    <span asp-validation-for="Adres"></span>
     <input asp-for="Adres" />
-    <label asp-for="Postcode"></label>
+    <label asp-for="Postcode">  </label>    <span asp-validation-for="Postcode"></span>
     <input asp-for="Postcode"  />
-    <label asp-for="Gemeente"></label>
+    <label asp-for="Gemeente">  </label>    <span asp-validation-for="Gemeente"></span>
     <input asp-for="Gemeente"  />
-    <label asp-for="Email"></label>
+    <label asp-for="Email"  >   </label>    <span asp-validation-for="Email"></span>
     <input asp-for="Email" />
-    <label asp-for="Telefoon"></label>
+    <label asp-for="Telefoon">  </label>  <span asp-validation-for="Telefoon"></span>
     <input asp-for="Telefoon" />
    
     <input type="submit" value="Toevoegen" />
-    <div asp-validation-summary="All"></div>
+    <div asp-validation-summary="None"></div>
 </form>
