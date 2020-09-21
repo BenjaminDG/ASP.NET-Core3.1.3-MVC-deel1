@@ -1,18 +1,20 @@
-﻿@model Brochure
+﻿@model BrochureViewModel
 @{
     ViewBag.Titel = "BrochureToevoegen";
 }
-<h2>Tik jouw reisbestemming</h2>
-<form asp-action="BrochureToevoegen" method="post">
-    <label asp-for="Bestemming"></label>
-    <input asp-for="Bestemming" />
-    <input type="submit" value="BrochureToevoegen" />
-    
-    <div asp-validation-summary="All"></div>
-</form>
+<div class="text-center">
+    <h1 class="display-4">Kies jou reisbestemming:</h1>
+    <form class="text-center" asp-action="BrochureToevoegen" method="post">
+
+        <input class="btn-block " asp-for="Bestemming" />
+        <input class="btn-primary btn-lg" type="submit" value="BrochureToevoegen" />
+
+        <div asp-validation-summary="All"></div>
+    </form>
 
 
 
+</div>
 
 
 

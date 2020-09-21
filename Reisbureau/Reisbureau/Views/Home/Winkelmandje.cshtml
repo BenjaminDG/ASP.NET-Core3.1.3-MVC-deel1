@@ -1,9 +1,13 @@
-﻿<p>Winkelmandje</p>
-@model List<Brochure>
-<h2>Brochures</h2>
-<ul>
-    @if (Model != null)
-        @foreach (var brochure in Model)
+﻿
+
+<p>Winkelmandje</p>
+@model BrochureViewModel
+@if (Model != null)
+{
+
+    @if (Model.Brochures.Count == 0) { } else {
+
+    <ul>@foreach (var brochure in Model.Brochures)
         {
             var url = "Verwijderen/" + brochure.ID;
 
@@ -15,17 +19,13 @@
                     <img src="~/Images/delete.png" alt="delete" />
                 </a>
             </li>
-          }
-            <li class="text-center">
+        }
+    </ul>
+    <p>
+        <a href="~/Home/BrochuresDoorsturen"
+           class="btn btn-primary btn-lg">Brochures aanvragen</a>
+    </p> }
 
 
-                <p>
-                    <a href="~/Home/BrochuresDoorsturen"
-                       class="btn btn-primary btn-lg">Brochures aanvragen;</a>
-                </p>
-            </li>
 
-
-        
-
-</ul>
+}

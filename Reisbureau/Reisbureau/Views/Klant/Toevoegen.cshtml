@@ -4,21 +4,22 @@
 <h2>Welkom op onze website!</h2>
 <h3>Om de reisbrochures te kunnen opsturen vragen we volgende gegevens:</h3>
 <form asp-action="Toevoegen" method="post">
-    <div> <label asp-for="Naam">    </label>    <span asp-validation-for="Naam"> </span></div>
+    <div> <label asp-for="Naam">    </label>    <span asp-validation-for="Naam" class="btn-outline-danger"> </span></div>
     <input asp-for="Naam" />
-    <label asp-for="Voornaam">   </label>   <span asp-validation-for="Voornaam"></span>
+    <label asp-for="Voornaam">   </label>   <span asp-validation-for="Voornaam"class="btn-outline-danger"></span>
     <input asp-for="Voornaam" />
-    <label asp-for="Adres">     </label>    <span asp-validation-for="Adres"></span>
+    <label asp-for="Adres">     </label>    <span asp-validation-for="Adres"class="btn-outline-danger"></span>
     <input asp-for="Adres" />
-    <label asp-for="Postcode">  </label>    <span asp-validation-for="Postcode"></span>
+    <label asp-for="Postcode">  </label>    <span asp-validation-for="Postcode"class="btn-outline-danger"></span>
     <input asp-for="Postcode"  />
-    <label asp-for="Gemeente">  </label>    <span asp-validation-for="Gemeente"></span>
+    <label asp-for="Gemeente">  </label>    <span asp-validation-for="Gemeente"class="btn-outline-danger"></span>
     <input asp-for="Gemeente"  />
-    <label asp-for="Email"  >   </label>    <span asp-validation-for="Email"></span>
+    <label asp-for="Email"  >   </label>    <span asp-validation-for="Email"class="btn-outline-danger"></span>
     <input asp-for="Email" />
-    <label asp-for="Telefoon">  </label>  <span asp-validation-for="Telefoon"></span>
+    <label asp-for="Telefoon">  </label>  <span asp-validation-for="Telefoon"class="btn-outline-danger"></span>
     <input asp-for="Telefoon" />
    
-    <input type="submit" value="Toevoegen" />
+    
+    <input type="submit" value="Toevoegen" class="btn btn-primary" />
     <div asp-validation-summary="None"></div>
 </form>

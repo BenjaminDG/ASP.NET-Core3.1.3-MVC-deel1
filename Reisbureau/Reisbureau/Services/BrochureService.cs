@@ -10,11 +10,12 @@ namespace Reisbureau.Services
     {
         private Dictionary<int, Brochure> brochures = new Dictionary<int, Brochure>();
         public BrochureService() {  }
+       
 
         public List<Brochure> FindAll() { return brochures.Values.ToList(); }
         public Brochure Read(int id) { return brochures[id]; }
         public void Delete(int id) { brochures.Remove(id); }
-        public void DeleteAll(int id ) { foreach(var brochure in brochures) brochures.Remove(id); }
+        public void DeleteAll( ) {   brochures.Clear(); } 
         public Brochure FindByID(int id) { return brochures[id]; }
         public void Add(Brochure b)
         {

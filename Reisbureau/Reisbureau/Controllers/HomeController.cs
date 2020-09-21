@@ -29,22 +29,18 @@ namespace Reisbureau.Controllers
         {
 
             var brochures = _brochureService.FindAll();
-            string laatsteBezoek = DateTime.Now.ToString();
-            CookieOptions option = new CookieOptions();
-            option.Expires = DateTime.Now.AddDays(365);
-            Response.Cookies.Append("lastvisit", laatsteBezoek, option);
-
-
-
-
+           
             if (Request.Cookies["Voornaam"] == null) { return Redirect("~/Klant/Toevoegen"); }
 
 
             else
                 ViewBag.Voornaam = Request.Cookies["Voornaam"];
-                return View();
+            BrochureViewModel vm = new BrochureViewModel();
+            vm.Brochures = _brochureService.FindAll();
 
 
+            return View(vm);
+            
         }
 
         [HttpGet]
@@ -63,9 +59,14 @@ namespace Reisbureau.Controllers
             if (this.ModelState.IsValid)
             {
                 
+                
+                
+                
+                
+                
+                
                 _brochureService.Add(b);
-
-                return RedirectToAction("Index");
+                return Redirect("~/") ;
 
             }
             else return View(b);
@@ -76,7 +77,7 @@ namespace Reisbureau.Controllers
             
                
             
-            return View(_brochureService.FindAll()); }
+            return View(); }
 
 
          public IActionResult Verwijderen(int id)
@@ -84,10 +85,10 @@ namespace Reisbureau.Controllers
              _brochureService.Delete(id);
             return RedirectToAction("Index");
         }
-        public IActionResult brochuresDoorsturen(int id) 
+        public IActionResult BrochuresDoorsturen(int id) 
         {
-
-            _brochureService.DeleteAll(id);
+            _brochureService.DeleteAll();
+            
             return RedirectToAction("Index"); 
         }
         public IActionResult Privacy()
